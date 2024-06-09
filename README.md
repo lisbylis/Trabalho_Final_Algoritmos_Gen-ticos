@@ -13,7 +13,11 @@ Para atacar o problema VRP, utilizamos um algoritmo genético (GA). Algoritmos g
 - O notebook [ga_trab_final.ipynb](https://github.com/lisbylis/Trabalho_Final_Algoritmos_NR/blob/main/ga_trab_final.ipynb) apresenta o algoritmo genético aplicado ao problema VRP.
 - As funções e operadores genéticos utilizados no notebook estão presentes no arquivo [ga_vehicle_routing.py](https://github.com/lisbylis/Trabalho_Final_Algoritmos_NR/blob/main/ga_vehicle_routing.py).
 
-
+# Operadores Genéticos utilizados
+- Mutação de Troca: Esse operador funciona trocando a posição de dois elementos em uma sequência. Nesse trabalho, ele funcionou trocando cidades de uma mesma rota.
+- Mutação de Partição:  Essa mutação altera a maneira como os elementos são divididos em subgrupos, criando novas partições que podem explorar diferentes configurações do espaço de soluções. Nesse caso, cada indivíduo pode ser reparticionado, alterando as cidades que cada veículo irá visitar.
+- Cruzamento Ordenado: Este operador é projetado para trabalhar com representações onde a ordem dos elementos é crucial.
+- Seleção por torneio: Esse operador vai selecionar os indíviduos com base no maior fitness!
 
 ## Referências 
 [1]. https://en.wikipedia.org/wiki/Vehicle_routing_problem 
