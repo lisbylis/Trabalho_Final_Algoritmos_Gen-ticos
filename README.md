@@ -17,4 +17,5 @@ Para atacar o problema VRP, utilizamos um algoritmo genético (GA). Algoritmos g
 
 ## Referências 
 [1]. https://en.wikipedia.org/wiki/Vehicle_routing_problem 
+
 [2]. https://pt.wikipedia.org/wiki/Algoritmo_gen%C3%A9tico
