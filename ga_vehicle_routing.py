@@ -239,53 +239,55 @@ def ordered_crossover_vr(parent1, parent2, crossover_rate=0.5):
     Returns:
       individual1, individual2: possible solutions.
     '''
-    individual1, total_parent1, partitions1 = [], [], []
-    individual2, total_parent2, partitions2 = [], [], []
-    partition = 0
-
-    for route in parent1:
-        total_parent1 += route
-        partition += len(route)
-        partitions1.append(partition)
+    value = rd.random()
+    if value < crossover_rate:
+        individual1, total_parent1, partitions1 = [], [], []
+        individual2, total_parent2, partitions2 = [], [], []
+        partition = 0
     
-    partition = 0
+        for route in parent1:
+            total_parent1 += route
+            partition += len(route)
+            partitions1.append(partition)
+        
+        partition = 0
+        
+        for route in parent2:
+            total_parent2 += route
+            partition += len(route)
+            partitions2.append(partition)
     
-    for route in parent2:
-        total_parent2 += route
-        partition += len(route)
-        partitions2.append(partition)
-
-    start_index = rd.randint(0, len(total_parent1) - 2)
-    end_index = rd.randint(start_index + 2, len(total_parent1))
-
-    total_individual1 = total_parent1[start_index : end_index]
-    total_individual2 = total_parent2[start_index : end_index]
- 
-    for gene in total_parent2:
-        if gene not in total_individual1:
-            total_individual1.append(gene)
+        start_index = rd.randint(0, len(total_parent1) - 2)
+        end_index = rd.randint(start_index + 2, len(total_parent1))
     
-    for gene in total_parent1:
-        if gene not in total_individual2:
-            total_individual2.append(gene)
-                        
-    for i in range(len(partitions1)):
-        route = total_individual1[0 : partitions1[0]]
-        if route not in individual1:
-            individual1.append(route)
-        else:
-            route = total_individual1[partitions1[i - 1] : partitions1[i]]
-            individual1.append(route)
-    
-    for i in range(len(partitions2)):
-        route = total_individual2[0 : partitions2[0]]
-        if route not in individual2:
-            individual2.append(route)
-        else:
-            route = total_individual2[partitions2[i - 1] : partitions2[i]]
-            individual2.append(route)
-    
-    return individual1, individual2
+        total_individual1 = total_parent1[start_index : end_index]
+        total_individual2 = total_parent2[start_index : end_index]
+     
+        for gene in total_parent2:
+            if gene not in total_individual1:
+                total_individual1.append(gene)
+        
+        for gene in total_parent1:
+            if gene not in total_individual2:
+                total_individual2.append(gene)
+                            
+        for i in range(len(partitions1)):
+            route = total_individual1[0 : partitions1[0]]
+            if route not in individual1:
+                individual1.append(route)
+            else:
+                route = total_individual1[partitions1[i - 1] : partitions1[i]]
+                individual1.append(route)
+        
+        for i in range(len(partitions2)):
+            route = total_individual2[0 : partitions2[0]]
+            if route not in individual2:
+                individual2.append(route)
+            else:
+                route = total_individual2[partitions2[i - 1] : partitions2[i]]
+                individual2.append(route)
+        
+        return individual1, individual2
  
 def population_ordered_crossover_vr(population, crossover_rate=0.5):
     '''Applies the ordered crossover to a whole population:
